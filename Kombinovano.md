@@ -517,6 +517,17 @@ Analogija sa katancima — ilustruje da je moguća bezbedna komunikacija **bez z
 
 Niko osim Alise i Bobana nije mogao da čita poruku, a nikad nisu razmenili ključ! U praksi se implementira korišćenjem komutativnog šifrovanja (gde je redosled primene ključeva nebitan).
 
+Malo formalnije rečeno:
+Alisa i Boban zajedno biraju jedan veliki prost broj n, po njegovom modulu se izvode operacije.
+Alisa bira svoj tajni ključ, koji je uzajamno prost sa n-1 (to je bitno da bi postojao inverz). Isto važi i za Bobana. 
+Koraci:
+1. Alisa uzima poruku i stepenuje je (podrazumeva se, po modulu) svojim tajnim ključem. Taj rezultat šalje Bobanu
+2. Boban prima rezultat i dodatno ga stepenuje svojim tajnim ključem. Sada poruka ima dva sloja zaštite. Šalje je Alisi. 
+3. Alisa prima poruku i primenjuje svoj inverzni ključ i time uklanja svoj sloj zaštite. Rezultat šalje Bobanu.
+4. Boban prima rezultat, primenjuje svoj inverzni ključ i dobija poruku.
+
+Bitni koncept zbog kog ovo funkcioniše: **komutativnost stepenovanja**
+
 ## Diffie-Hellman razmena ključeva (pogled sa vežbi)
 
 Nije sistem za šifrovanje, već protokol kojim dve strane **dogovaraju zajednički tajni ključ** preko nesigurnog kanala. Zasniva se na **problemu diskretnog logaritma**.
